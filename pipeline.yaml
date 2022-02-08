@@ -10,7 +10,7 @@ steps:
   - path: tasks/run_jenkins_job.py
     type: inject
     image: python:latest
-    commands: [python, run_jenkins_job.py]
+    commands: [pip install jenkins && python run_jenkins_job.py]
     before: false
     variables:
       JENKINS_URL: jenkins.jenkins.svc.cluster.local
