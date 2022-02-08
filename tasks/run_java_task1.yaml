@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: java-task
+spec:
+  containers:
+  - name: java-task
+    image: helloworld-image
+    ports:
+    - containerPort: 80
