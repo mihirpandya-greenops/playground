@@ -1,10 +1,12 @@
-apiVersion: v1
+apiVersion: batch/v1
 kind: Job
 metadata:
   name: java-task
 spec:
-  containers:
-  - name: java-task
-    image: helloworld-image
-    ports:
-    - containerPort: 80
+  template:
+    spec:
+      containers:
+      - name: helloworld
+        image: helloworld-image
+        imagePullPolicy: Never
+      restartPolicy: Never
