@@ -6,27 +6,27 @@ argo_version_lock: true
 cluster_name: in-cluster
 steps:
 - name: run_jenkins_job
-  tests:
-  - path: tasks/run_jenkins_job.py
-    type: inject
-    image: python:latest
-    commands: [/bin/bash, -c, pip install python-jenkins && python run_jenkins_job.py]
-    before: false
-    variables:
-      JENKINS_URL: http://jenkins.jenkins.svc.cluster.local:8080
-      JOB_NAME: test
-      TOKEN_NAME: test_token
+  # tests:
+  # - path: tasks/run_jenkins_job.py
+  #   type: inject
+  #   image: python:latest
+  #   commands: [/bin/bash, -c, pip install python-jenkins && python run_jenkins_job.py]
+  #   before: false
+  #   variables:
+  #     JENKINS_URL: http://jenkins.jenkins.svc.cluster.local:8080
+  #     JOB_NAME: test
+  #     TOKEN_NAME: test_token
 - name: deploy_to_dev
   application_path: testapp_int.yml
   rollback_limit: 1
   tests:
-  - path: tasks/run_java_task1.yaml
-    type: custom
-    before: true
+  # - path: tasks/run_java_task1.yaml
+  #   type: custom
+  #   before: true
   - path: tasks/HelloWorld.java
     type: inject
-    image: openjdk:16-alpine3.13
-    commands: [javac HelloWorld.java && java HelloWorld]
+    image: java:latest
+    commands: [/bin/bash, -c, javac HelloWorld.java && java HelloWorld]
     before: true
   #The schema is DAG based, allowing both linear and complex pipelines
   dependencies:
