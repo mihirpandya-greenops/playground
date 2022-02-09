@@ -6,16 +6,16 @@ argo_version_lock: true
 cluster_name: in-cluster
 steps:
 - name: run_jenkins_job
-  # tests:
-  # - path: tasks/run_jenkins_job.py
-  #   type: inject
-  #   image: python:latest
-  #   commands: [/bin/bash, -c, pip install python-jenkins && python run_jenkins_job.py]
-  #   before: false
-  #   variables:
-  #     JENKINS_URL: http://jenkins.jenkins.svc.cluster.local:8080
-  #     JOB_NAME: test
-  #     TOKEN_NAME: test_token
+  tests:
+  - path: tasks/run_jenkins_job.py
+    type: inject
+    image: python:latest
+    commands: [/bin/bash, -c, pip install python-jenkins && python run_jenkins_job.py]
+    before: false
+    variables:
+      JENKINS_URL: http://jenkins.jenkins.svc.cluster.local:8080
+      JOB_NAME: test
+      TOKEN_NAME: test_token
 - name: deploy_to_dev
   application_path: testapp_int.yml
   rollback_limit: 1
