@@ -20,9 +20,9 @@ steps:
   application_path: testapp_int.yml
   rollback_limit: 1
   tests:
-  # - path: tasks/run_java_task1.yaml
-  #   type: custom
-  #   before: true
+  - path: tasks/run_java_task1.yaml
+    type: custom
+    before: true
   - path: tasks/HelloWorld.java
     type: inject
     image: java:latest
