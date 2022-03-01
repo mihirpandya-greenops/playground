@@ -7,7 +7,7 @@ i = 0
 while i < 10:
     print(os.getenv('TOKEN_NAME'))
     time.sleep(10)
-    i++
+    i+=1
     
 
 # jenkins_url = os.getenv('JENKINS_URL')
