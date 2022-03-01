@@ -3,14 +3,17 @@ import os
 import sys
 import time
 
+
+print("here")
 i = 0
 while i < 10:
+    print("here again")
     token_name = os.getenv('TOKEN_NAME')
     if token_name == "":
         print(token_name)
     else:
         print("no token name found")
-    time.sleep(10)
+    time.sleep(1)
     i+=1
     
 
