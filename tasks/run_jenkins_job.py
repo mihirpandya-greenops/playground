@@ -3,10 +3,11 @@ import os
 import sys
 import time
 
-i = 10
+i = 0
 while i < 10:
     print(os.getenv('TOKEN_NAME'))
     time.sleep(10)
+    i++
     
 
 # jenkins_url = os.getenv('JENKINS_URL')
