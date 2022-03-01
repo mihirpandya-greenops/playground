@@ -22,7 +22,6 @@ steps:
           secretKeyRef:
             name: jenkins-token-secret
             key: password
-      TOKEN_NAME: test_token
 - name: deploy_to_dev
   application_path: testapp_int.yml
   rollback_limit: 1
