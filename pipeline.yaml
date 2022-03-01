@@ -10,7 +10,7 @@ steps:
   - path: tasks/run_jenkins_job.py
     type: inject
     image: python:latest
-    commands: [/bin/bash, -c, python run_jenkins_job.py]
+    commands: [/bin/bash, -c, pip install python-jenkins && python run_jenkins_job.py]
     before: false
     variables:
       - name: JENKINS_URL
