@@ -13,7 +13,7 @@ while i < 10:
         print(token_name)
     else:
         print("no token name found")
-    time.sleep(1)
+    time.sleep(10)
     i+=1
     
 
