@@ -1,6 +1,6 @@
-import jenkins
+# import jenkins
 import os
-import sys
+# import sys
 import time
 
 
@@ -8,7 +8,7 @@ print("here")
 i = 0
 while i < 10:
     print("here again")
-    token_name = os.getenv('TOKEN_NAME')
+    token_name = os.environ['TOKEN_NAME']
     if token_name == "":
         print(token_name)
     else:
