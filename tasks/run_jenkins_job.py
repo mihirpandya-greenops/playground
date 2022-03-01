@@ -9,7 +9,7 @@ i = 0
 while i < 10:
     print("here again")
     token_name = os.environ['TOKEN_NAME']
-    if token_name == "":
+    if token_name != "":
         print(token_name)
     else:
         print("no token name found")
