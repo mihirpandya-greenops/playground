@@ -13,8 +13,15 @@ steps:
     commands: [/bin/bash, -c, pip install python-jenkins && python run_jenkins_job.py]
     before: false
     variables:
-      JENKINS_URL: http://jenkins.jenkins.svc.cluster.local:8080
-      JOB_NAME: test
+      - name: JENKINS_URL
+        value: http://jenkins.jenkins.svc.cluster.local:8080
+      - name: JOB_NAME
+        value: test
+      - name: TOKEN_NAME
+        valueFrom:
+          secretKeyRef:
+            name: jenkins-token-secret
+            key: password
       TOKEN_NAME: test_token
 - name: deploy_to_dev
   application_path: testapp_int.yml
