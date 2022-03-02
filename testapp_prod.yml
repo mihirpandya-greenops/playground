@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: atlastestapp-prod
+  namespace: argocd
+  annotations:
+    atlas-argo-sync-prune: "true"
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/mihirpandya-greenops/playground.git
+    targetRevision: main
+    path: argo_manifest
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: prod
