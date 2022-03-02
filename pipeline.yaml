@@ -23,7 +23,7 @@ steps:
             name: jenkins-token-secret
             key: password
 - name: deploy_to_staging
-  application_path: testapp_dev.yml
+  application_path: testapp_staging.yml
   tests:
   - path: tasks/smoke_test.sh
     type: inject
@@ -37,7 +37,7 @@ steps:
   dependencies:
   - run_jenkins_job
 - name: deploy_to_prod
-  application_path: testapp_int.yml
+  application_path: testapp_prod.yml
   rollback_limit: 1
   tests:
   - path: tasks/smoke_test.sh
