@@ -49,4 +49,4 @@ steps:
       - name: SERVICE_INTERNAL_URL
         value: testapp.prod.svc.cluster.local
   dependencies:
-  - deploy_to_dev
+  - deploy_to_staging
