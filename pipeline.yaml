@@ -22,18 +22,31 @@ steps:
           secretKeyRef:
             name: jenkins-token-secret
             key: password
-- name: deploy_to_dev
-  application_path: testapp_int.yml
-  rollback_limit: 1
+- name: deploy_to_staging
+  application_path: testapp_dev.yml
   tests:
-  - path: tasks/run_java_task1.yaml
-    type: custom
-    before: true
-  - path: tasks/HelloWorld.java
+  - path: tasks/smoke_test.sh
     type: inject
-    image: java:latest
-    commands: [/bin/bash, -c, javac HelloWorld.java && java HelloWorld]
-    before: true
+    image: curlimages/curl:latest
+    commands: [sh, -c, ./smoke_test.sh]
+    before: false
+    variables:
+      - name: SERVICE_INTERNAL_URL
+        value: testapp.staging.svc.cluster.local
   #The schema is DAG based, allowing both linear and complex pipelines
   dependencies:
   - run_jenkins_job
+- name: deploy_to_prod
+  application_path: testapp_int.yml
+  rollback_limit: 1
+  tests:
+  - path: tasks/smoke_test.sh
+    type: inject
+    image: curlimages/curl:latest
+    commands: [sh, -c, ./smoke_test.sh]
+    before: false
+    variables:
+      - name: SERVICE_INTERNAL_URL
+        value: testapp.prod.svc.cluster.local
+  dependencies:
+  - deploy_to_dev
