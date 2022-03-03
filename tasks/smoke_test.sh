@@ -1,7 +1,9 @@
 #!/bin/sh
 sleep 15
-echo "Test failed"
-exit 1
+if [ "$SERVICE_INTERNAL_URL" == "testapp.prod.svc.cluster.local" ]; then
+   echo "Test failed"
+   exit 1;
+fi
 # sleep 10
 # for i in 1 2 3 4 5
 # do
