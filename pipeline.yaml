@@ -17,7 +17,7 @@ steps:
         value: http://jenkins.jenkins.svc.cluster.local:8080
       - name: JOB_NAME
         value: test
-      - name: TOKEN_NAME
+      - name: JENKINS_PASSWORD
         valueFrom:
           secretKeyRef:
             name: jenkins-token-secret
